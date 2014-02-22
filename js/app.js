@@ -13,6 +13,7 @@ angular.module('SeriesGuide', [
     'SeriesGuide.directives', 
     'SeriesGuide.controllers', 
     'SeriesGuide.thepiratebay',
+    'SeriesGuide.kickasstorrents',
     'SeriesGuide.thetvdb',
     'SeriesGuide.imdb',
     'lazy-background'

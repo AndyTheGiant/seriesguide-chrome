@@ -8,7 +8,6 @@
     "http://*/*",
     "https://*/*",
     "tabs",
-    "topSites",
     "notifications"  
   ],
    "background": {
