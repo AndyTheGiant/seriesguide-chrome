@@ -1,26 +1,28 @@
 {
   "manifest_version": 2,
-  "name": "SeriesGuide Chrome v2",
-  "short_name": "SeriesGuide Chrome",  
-  "version" : "0.1",
+  "name": "SeriesGuide Chrome v2 App ",
+  "short_name": "SeriesGuide Chrome App",  
+  "version" : "0.11",
   "description": "Manage your favorite TV series and movies from your browser's new tab page",
-  "permissions": [
+    "permissions": [
     "http://*/*",
     "https://*/*",
+    "tabs",
     "topSites",
-    "notifications" 
+    "notifications"  
   ],
+   "background": {
+    "scripts": ["js/vendor/angular.min.js", "launch.js"]
+  },
   "icons": {
     "16": "img/icon16.png",
     "48": "img/icon48.png",
     "128": "img/icon128.png"
   },
-  "background": {
-    "scripts": ["js/vendor/angular.min.js"]
+  "browser_action": {
+    "default_title": "",
+    "default_icon": "img/icon48.png"
   },
-  "content_security_policy": "script-src 'self'; object-src 'self'",
-  "chrome_url_overrides" : {
-    "newtab": "tab.html"
-  }, 
-  "homepage_url": "http://reddit.com/r/seriesguide/"
+  "homepage_url": "http://reddit.com/r/seriesguide/",
+  "content_security_policy": "script-src 'self'; object-src 'self'"
 }
