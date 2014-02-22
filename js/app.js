@@ -15,7 +15,6 @@ angular.module('SeriesGuide', [
     'SeriesGuide.thepiratebay',
     'SeriesGuide.thetvdb',
     'SeriesGuide.imdb',
-    'Chrome.topSites',
     'lazy-background'
  ])
 
