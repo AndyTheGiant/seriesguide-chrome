@@ -14,6 +14,8 @@ angular.module('SeriesGuide', [
     'SeriesGuide.controllers', 
     'SeriesGuide.thepiratebay',
     'SeriesGuide.kickasstorrents',
+    'SeriesGuide.tvrage',
+    'SeriesGuide.tvrage.sync',
     'SeriesGuide.thetvdb',
     'SeriesGuide.imdb',
     'lazy-background'
