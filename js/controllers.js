@@ -1,12 +1,12 @@
-angular.module('SeriesGuide.controllers', ['ngAnimate'])
+angular.module('SeriesGuide.controllers',[])
 
 
 /**
  * Main controller: Kicks in favorites display
  */
 .controller('MainCtrl', 
-  function($scope, $rootScope, FavoritesService) {
- 	var favorites = [];
+  function($scope, $rootScope, FavoritesService, $rootElement) {
+  	var favorites = [];
   	$scope.searchEngine = 1;
   	$scope.searchingForSerie = false;
 
@@ -35,13 +35,12 @@ angular.module('SeriesGuide.controllers', ['ngAnimate'])
 		     $rootScope.$broadcast('background:load', 'http://thetvdb.com/banners/'+serie.fanart);	
 	     }
 	     $scope.$digest(); // notify the scope that new data came in
-   });
+   	});
   	$scope.$on('episodes:inserted', function(event, serie) {
   		if(serie.get('fanart') != '') {
 		 $rootScope.$broadcast('background:load', 'http://thetvdb.com/banners/'+serie.get('fanart'));
 		}
   	});
-
 })
 
 .controller('SerieCtrl',  
@@ -154,6 +153,12 @@ angular.module('SeriesGuide.controllers', ['ngAnimate'])
 })
 
 
+
+.controller('WatchlistCtrl',  function() {
+
+	}
+)
+
 .controller('EpisodeCtrl',  
 
 	function(TheTVDB, ThePirateBay, FavoritesService, NotificationService, $routeParams, $scope, $rootScope) {
@@ -221,11 +226,20 @@ angular.module('SeriesGuide.controllers', ['ngAnimate'])
 
 
 .controller('SettingsCtrl', 
-  function($scope, $location, UserService) {
-    $scope.user = UserService.user;
+  function($scope, $location, $rootScope, FavoritesService) {
+    
+    $scope.favorites = FavoritesService.favorites;
+  	$scope.$on('favorites:updated', function(event,data) {
+	     // you could inspect the data to see if what you care about changed, or just update your own scope
+	     if(data.favorites && data.favorites.length > 0) {
+		     var serie = data.favorites[Math.floor(Math.random() * data.favorites.length)];
+		     $rootScope.$broadcast('background:load', 'http://thetvdb.com/banners/'+serie.fanart);	
+	     }
+	     $scope.$digest(); // notify the scope that new data came in
+   	});
 
     $scope.save = function() {
-      UserService.save();
+     // UserService.save();
       $location.path('/');
     }
     //$scope.fetchCities = Weather.getCityDetails;

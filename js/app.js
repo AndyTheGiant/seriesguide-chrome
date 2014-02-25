@@ -4,7 +4,6 @@
 
 angular.module('SeriesGuide', [
 	'ngRoute',
-    'ngAnimate',
 	'xml',	
     'datePicker',
     'ui.bootstrap',
@@ -14,10 +13,13 @@ angular.module('SeriesGuide', [
     'SeriesGuide.controllers', 
     'SeriesGuide.thepiratebay',
     'SeriesGuide.kickasstorrents',
+    'SeriesGuide.torrentfreak',
     'SeriesGuide.tvrage',
     'SeriesGuide.tvrage.sync',
     'SeriesGuide.thetvdb',
     'SeriesGuide.imdb',
+    'colorpicker.module',
+    'Chrome.topSites',
     'lazy-background'
  ])
 
@@ -41,6 +43,14 @@ angular.module('SeriesGuide', [
     };
 })
 
+.filter('unsafeurl', function($sce) {
+    return function(val) {
+        $out =  $sce.trustAsResourceUrl(val);
+        debugger;
+        return $out;
+    };
+})
+
 /**
  * Routing configuration. 
  */
@@ -49,6 +59,10 @@ angular.module('SeriesGuide', [
     .when('/', {
       templateUrl: 'templates/home.html', 
       controller: 'MainCtrl'
+    })
+    .when('/watchlist', {
+        templateUrl: 'templates/watchlist.html',
+        controller: 'WatchlistCtrl'
     })
     .when('/series/:id', {
     	templateUrl: 'templates/serie.html',
