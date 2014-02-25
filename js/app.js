@@ -19,7 +19,6 @@ angular.module('SeriesGuide', [
     'SeriesGuide.thetvdb',
     'SeriesGuide.imdb',
     'colorpicker.module',
-    'Chrome.topSites',
     'lazy-background'
  ])
 
